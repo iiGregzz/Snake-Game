@@ -16,3 +16,23 @@
 // An alert will tell the player that they lost and the game screen will revert to the snake being in the middle of the play area.
     
 // If I have time, an optional tally of how many food blocks the player was able to consume would be a nice touch. This will act as the score for the game.
+
+// SNAKE GAME CODE
+
+// SNAKE CODE
+
+// SNAKE MOVEMENT
+
+    // Snake movement speed can be adjusted by changing the number next to 'snakeMovementSpeed'. The number determines the amount of times that the snake head moved per second.
+
+let = lastRenderTime = 0;
+const snakeMovementSpeed = 20;
+
+function main(timeNow) {
+    window.requestAnimationFrame(main);
+    const secondsSinceLastRender = (timeNow - lastRenderTime) / 1000;
+    if (secondsSinceLastRender < (1 / snakeMovementSpeed)) return
+    console.log("Move!");
+    lastRenderTime = timeNow;
+}
+window.requestAnimationFrame(main);
