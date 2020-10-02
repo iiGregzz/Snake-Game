@@ -26,13 +26,29 @@
     // Snake movement speed can be adjusted by changing the number next to 'snakeMovementSpeed'. The number determines the amount of times that the snake head moved per second.
 
 let = lastRenderTime = 0;
-const snakeMovementSpeed = 20;
+const snakeMovementSpeed = 2;
 
 function main(timeNow) {
     window.requestAnimationFrame(main);
     const secondsSinceLastRender = (timeNow - lastRenderTime) / 1000;
     if (secondsSinceLastRender < (1 / snakeMovementSpeed)) return
-    console.log("Move!");
     lastRenderTime = timeNow;
+    
+    function updatePage() {
+        updateSnakeBody()
+    }
+    
+    function createPage() {
+        createSnakeBody()
+    }
 }
+
 window.requestAnimationFrame(main);
+
+function updateSnakeBody() {
+    console.log("Update snake...")
+}
+                                
+function createSnakeBody() {
+    console.log("Create Snake")
+}
