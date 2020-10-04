@@ -12,7 +12,7 @@ body {
     background-color: slategrey;
 }
 
-#playing-area {
+#playingarea {
     height: 100vmin;
     width: 100vmin;
     display: grid;
