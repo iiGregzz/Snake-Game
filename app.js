@@ -25,16 +25,33 @@
 
     // Snake movement speed can be adjusted by changing the number next to 'snakeMovementSpeed'. The number determines the amount of times that the snake head moved per second.
 
-function updatePage() {
-    console.log("Update snake...")
-}
-
-function createPage() {
-    console.log("Create snake...")
-}
-
 let = lastRenderTime = 0;
 const snakeMovementSpeed = 2;
+const playingSquare = document.getElementById("playingarea");
+const bodySegments = [
+    { x:10, y:11 },
+    { x:11, y:11 },
+    { x:12, y:11 }
+];
+
+function updatePage() {
+    for (let i = bodySegments.length - 2; i >= 0; i--) {
+        bodySegments[i + 1] = { ...bodySegments[i] };
+    }
+
+    bodySegments[0].x += 1;
+    bodySegments[0].y += 0;
+}   
+
+function createPage(playingSquare) {
+    bodySegments.forEach(segment => {
+        const snakeCharacter = document.createElement("div");
+        snakeCharacter.style.gridRowStart = segment.x;
+        snakeCharacter.style.gridColumnStart = segment.y;
+        snakeCharacter.classList.add("snake");
+        
+    });
+}
 
 function main(timeNow) {
     window.requestAnimationFrame(main);
@@ -42,16 +59,16 @@ function main(timeNow) {
     if (secondsSinceLastRender < (1 / snakeMovementSpeed)) return
     lastRenderTime = timeNow;
 
-    updatePage()
-    createPage()
+    updatePage();
+    createPage();
 }
 
 window.requestAnimationFrame(main);
 
 function updateSnakeBody() {
-    updatePage()
+    updatePage();
 }
                                 
 function createSnakeBody() {
-    createPage()
-}
+    createPage(playingSquare)
+}   

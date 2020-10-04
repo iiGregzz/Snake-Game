@@ -21,7 +21,7 @@ body {
     background-color: lightgrey;
 }
 
-#snake {
+.snake {
     border: .2vmin solid black;
     background-color: limegreen;
 }
