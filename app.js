@@ -27,7 +27,6 @@
 
 let = lastRenderTime = 0;
 const snakeMovementSpeed = 2;
-const playingSquare = document.getElementById("playingarea");
 const bodySegments = [
     { x:10, y:11 },
     { x:11, y:11 },
@@ -35,22 +34,11 @@ const bodySegments = [
 ];
 
 function updatePage() {
-    for (let i = bodySegments.length - 2; i >= 0; i--) {
-        bodySegments[i + 1] = { ...bodySegments[i] };
-    }
+    console.log("Update snake...")
+}
 
-    bodySegments[0].x += 1;
-    bodySegments[0].y += 0;
-}   
-
-function createPage(playingSquare) {
-    bodySegments.forEach(segment => {
-        const snakeCharacter = document.createElement("div");
-        snakeCharacter.style.gridRowStart = segment.x;
-        snakeCharacter.style.gridColumnStart = segment.y;
-        snakeCharacter.classList.add("snake");
-        
-    });
+function createPage() {
+    console.log("Create snake...")
 }
 
 function main(timeNow) {
@@ -70,5 +58,5 @@ function updateSnakeBody() {
 }
                                 
 function createSnakeBody() {
-    createPage(playingSquare)
+    createPage()
 }   
