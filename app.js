@@ -21,181 +21,181 @@
 
 // LIST OF ALL VARIABLES
 
-const gameAreaBorder = "black";
-const areaBackgroundColour = "white";
-const snakeBodyColour = "pink";
-const snakeBorderColour = "black";
+// const gameAreaBorder = "black";
+// const areaBackgroundColour = "white";
+// const snakeBodyColour = "pink";
+// const snakeBorderColour = "black";
 
-let snake = [
-    {x: 300, y: 300},
-    {x: 290, y: 300},
-    {x: 280, y: 300},
-]
+// let snake = [
+//     {x: 300, y: 300},
+//     {x: 290, y: 300},
+//     {x: 280, y: 300},
+// ]
 
-// This is the starting score tally.
+// // This is the starting score tally.
 
-let score = 0;
+// let score = 0;
 
-// This is the variable that determines whether a direction input has been detected.
+// // This is the variable that determines whether a direction input has been detected.
 
-let snakeDirectionChange = false;
+// let snakeDirectionChange = false;
 
-// Variables to contain the information for food spawns.
+// // Variables to contain the information for food spawns.
 
-let foodSpawnX;
-let foodSpawnY;
+// let foodSpawnX;
+// let foodSpawnY;
 
-// Vertical speed of the snake.
+// // Vertical speed of the snake.
 
-let directionY = 0;
+// let directionY = 0;
 
-// Horizontal speed of the snake.
+// // Horizontal speed of the snake.
 
-let directionX = 10;
+// let directionX = 10;
 
 
-// Variable to store the game area.
+// // Variable to store the game area.
 
-const playingArea = document.getElementById("playingarea");
+// const playingArea = document.getElementById("playingarea");
 
-// Return a two dimensional drawing context.
+// // Return a two dimensional drawing context.
 
-const playingAreaContext = playingArea.getContext("2d");
+// const playingAreaContext = playingArea.getContext("2d");
 
-// LIST OF ALL FUNCTIONS USED TO BUILD ELEMENTS
+// // LIST OF ALL FUNCTIONS USED TO BUILD ELEMENTS
 
-// Canvas border properties.
+// // Canvas border properties.
 
-function buildCanvas() {
-    playingAreaContext.fillStyle = areaBackgroundColour;
-    playingAreaContext.strokestyle = gameAreaBorder;
-    playingAreaContext.fillRect(0, 0, playingArea.width, playingArea.height);
-    playingAreaContext.strokeRect(0, 0, playingArea.width, playingArea.height);
-}
+// function buildCanvas() {
+//     playingAreaContext.fillStyle = areaBackgroundColour;
+//     playingAreaContext.strokestyle = gameAreaBorder;
+//     playingAreaContext.fillRect(0, 0, playingArea.width, playingArea.height);
+//     playingAreaContext.strokeRect(0, 0, playingArea.width, playingArea.height);
+// }
 
-// Function to create each snake part according to new current position.
-function drawSnakePart(snakePart) {
-    playingAreaContext.fillStyle = snakeBodyColour;
-    playingAreaContext.strokestyle = snakeBorderColour;
-    playingAreaContext.fillRect(snakePart.x, snakePart.y, 10, 10);
-    playingAreaContext.strokeRect(snakePart.x, snakePart.y, 10, 10);
-}
+// // Function to create each snake part according to new current position.
+// function drawSnakePart(snakePart) {
+//     playingAreaContext.fillStyle = snakeBodyColour;
+//     playingAreaContext.strokestyle = snakeBorderColour;
+//     playingAreaContext.fillRect(snakePart.x, snakePart.y, 10, 10);
+//     playingAreaContext.strokeRect(snakePart.x, snakePart.y, 10, 10);
+// }
 
-// Draws the food icon when called upon
-function createFoodIcon() {
-    playingAreaContext.fillStyle = "red";
-    playingAreaContext.strokestyle = "black";
-    playingAreaContext.fillRect(foodSpawnX, foodSpawnY, 10, 10);
-    playingAreaContext.strokeRect(foodSpawnX, foodSpawnY, 10, 10);
-}
+// // Draws the food icon when called upon
+// function createFoodIcon() {
+//     playingAreaContext.fillStyle = "red";
+//     playingAreaContext.strokestyle = "black";
+//     playingAreaContext.fillRect(foodSpawnX, foodSpawnY, 10, 10);
+//     playingAreaContext.strokeRect(foodSpawnX, foodSpawnY, 10, 10);
+// }
 
-// Generates a random co-ordinate for the food. This will be used to feed into the generateFood function.
-function randomGeneratorForFood(min, max) {
-    return Math.round((Math.random() * (max-min) + min) / 10) * 10;
-}
+// // Generates a random co-ordinate for the food. This will be used to feed into the generateFood function.
+// function randomGeneratorForFood(min, max) {
+//     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+// }
 
-function generateFood() {
-    foodSpawnX = randomGeneratorForFood(0, playingArea.width - 10);
-    foodSpawnY = randomGeneratorForFood(0, playingArea.height - 10);
-    snake.forEach(function has_snake_eaten_food(part) {
-        const has_eaten = part.x == foodSpawnX && part.y == foodSpawnY;
-        if (has_eaten) generateFood();
-    });
-}
+// function generateFood() {
+//     foodSpawnX = randomGeneratorForFood(0, playingArea.width - 10);
+//     foodSpawnY = randomGeneratorForFood(0, playingArea.height - 10);
+//     snake.forEach(function has_snake_eaten_food(part) {
+//         const has_eaten = part.x == foodSpawnX && part.y == foodSpawnY;
+//         if (has_eaten) generateFood();
+//     });
+// }
 
-// FUNCTIONS USED TO RUN THE GAME
+// // FUNCTIONS USED TO RUN THE GAME
 
-// Main game function that allows the game to start.
+// // Main game function that allows the game to start.
 
-main();
+// main();
 
-// Function call to generate a piece of food.
+// // Function call to generate a piece of food.
 
-generateFood();
+// generateFood();
 
-document.addEventListener("keydown", changeDirection);
+// document.addEventListener("keydown", changeDirection);
 
-// This is the main game loop. This will allow the game to keep running unless 'gameHasEnded = true.
+// // This is the main game loop. This will allow the game to keep running unless 'gameHasEnded = true.
 
-function main() {
-    if (gameHasEnded()) return;
-    snakeDirectionChange = false;
-    setTimeout(function onTick() {
-    buildCanvas();
-    move_snake();
-    buildSnake();
-    createFoodIcon();
+// function main() {
+//     if (gameHasEnded()) return;
+//     snakeDirectionChange = false;
+//     setTimeout(function onTick() {
+//     buildCanvas();
+//     move_snake();
+//     buildSnake();
+//     createFoodIcon();
 
-    // Call main again if no end game condition is met. This is how the game loop keeps running.
+//     // Call main again if no end game condition is met. This is how the game loop keeps running.
 
-    main();
-    }, 100)
-}
+//     main();
+//     }, 100)
+// }
 
-// This function is used to re-build the snake on a loop based on new current snake position.
+// // This function is used to re-build the snake on a loop based on new current snake position.
 
-function buildSnake() {
-    snake.forEach(drawSnakePart)
-}
+// function buildSnake() {
+//     snake.forEach(drawSnakePart)
+// }
 
-function gameHasEnded() {
+// function gameHasEnded() {
 
-    for (let i = 4; i < snake.length; i++) {
-        if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
-    }
-    const topCollision = snake[0].y < 0;
-    const rightCollision = snake[0].x > playingArea.width - 10;
-    const bottomCollision = snake[0].y > playingArea.height - 10;
-    const leftCollision = snake[0].x < 0;
-    return leftCollision || rightCollision || topCollision || bottomCollision
-}
+//     for (let i = 4; i < snake.length; i++) {
+//         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
+//     }
+//     const topCollision = snake[0].y < 0;
+//     const rightCollision = snake[0].x > playingArea.width - 10;
+//     const bottomCollision = snake[0].y > playingArea.height - 10;
+//     const leftCollision = snake[0].x < 0;
+//     return leftCollision || rightCollision || topCollision || bottomCollision
+// }
 
-//JAKE'S MOVEMENT CODE
+// //JAKE'S MOVEMENT CODE
 
-function changeDirection(event) {
-    const LEFT_KEY = 37;
-    const UP_KEY = 38;
-    const RIGHT_KEY = 39;
-    const DOWN_KEY = 40;
+// function changeDirection(event) {
+//     const LEFT_KEY = 37;
+//     const UP_KEY = 38;
+//     const RIGHT_KEY = 39;
+//     const DOWN_KEY = 40;
 
-    if (snakeDirectionChange) return;
-        snakeDirectionChange = true;
-        const keyPressed = event.keyCode;
-        const goingUp = directionY === -10;
-        const goingDown = directionY === 10;
-        const goingRight = directionX === 10;
-        const goingLeft = directionX === -10;
-    if (keyPressed === LEFT_KEY && !goingRight) {
-        directionX = -10;
-        directionY = 0;
-    }
-    if (keyPressed === UP_KEY && !goingDown) {
-        directionX = 0;
-        directionY = -10;
-    }
-    if (keyPressed === RIGHT_KEY && !goingLeft) {
-        directionX = 10;
-        directionY = 0;
-    }
-    if (keyPressed === DOWN_KEY && !goingUp) {
-        directionX = 0;
-        directionY = 10;
-    }
-}
+//     if (snakeDirectionChange) return;
+//         snakeDirectionChange = true;
+//         const keyPressed = event.keyCode;
+//         const goingUp = directionY === -10;
+//         const goingDown = directionY === 10;
+//         const goingRight = directionX === 10;
+//         const goingLeft = directionX === -10;
+//     if (keyPressed === LEFT_KEY && !goingRight) {
+//         directionX = -10;
+//         directionY = 0;
+//     }
+//     if (keyPressed === UP_KEY && !goingDown) {
+//         directionX = 0;
+//         directionY = -10;
+//     }
+//     if (keyPressed === RIGHT_KEY && !goingLeft) {
+//         directionX = 10;
+//         directionY = 0;
+//     }
+//     if (keyPressed === DOWN_KEY && !goingUp) {
+//         directionX = 0;
+//         directionY = 10;
+//     }
+// }
 
-function move_snake() {
-    // Create the new Snake's head
-    const head = {x: snake[0].x + directionX, y: snake[0].y + directionY};
-    // Add the new head to the beginning of snake body
-    snake.unshift(head);
-    const has_eaten_food = snake[0].x === foodSpawnX && snake[0].y === foodSpawnY;
-    if (has_eaten_food) {
-        // Increase score
-        score += 1;
-        // Generate new food location
-        generateFood();
-    } else {
-        // Remove the last part of snake body
-        snake.pop();
-    }
-}
+// function move_snake() {
+//     // Create the new Snake's head
+//     const head = {x: snake[0].x + directionX, y: snake[0].y + directionY};
+//     // Add the new head to the beginning of snake body
+//     snake.unshift(head);
+//     const has_eaten_food = snake[0].x === foodSpawnX && snake[0].y === foodSpawnY;
+//     if (has_eaten_food) {
+//         // Increase score
+//         score += 1;
+//         // Generate new food location
+//         generateFood();
+//     } else {
+//         // Remove the last part of snake body
+//         snake.pop();
+//     }
+// }
