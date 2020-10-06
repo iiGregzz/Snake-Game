@@ -1,6 +1,6 @@
 // Given that a minimum and maximum parameter is set, the function should give 
 
-const randomGeneratorForFood = require("../app.js")
+const randomGeneratorForFood = require("../food.js")
 
 describe("Random Food Generator function", () => {
     test("Given a minimum number is entered and a maximum number is entered, a random whole number is returned.", () => {
