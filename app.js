@@ -199,3 +199,5 @@ function move_snake() {
         snake.pop();
     }
 }
+
+module.exports = randomGeneratorForFood
